@@ -4,25 +4,72 @@ import itemContext from "./context";
 
 function ItemCard({ name, price }) {
 
-  const value = useContext(itemContext);
+  const {total,setTotal,cart,setCart,item,setItem} = useContext(itemContext);
+
+ 
+
+ 
   const handleAdd = () => {
-    value.setItem(value.item+1);
-    value.setTotal(price+value.total)};
+    setTotal(total+price);
+    setItem(item+1);   
+    const present= cart.find((item)=>name===item.name);
+    if(present){
+       const newCart = cart.map((item)=>
+       {
+       if(item.name===name){
+        item.count= item.count+1;
+       }
+       return item;  
+      }
+       );
+       setCart(newCart); 
+ 
+    }
+    else {
+
+      let newCart = cart;
+      newCart.push({name, count:1,price});
+    }
+
+  };
+
+
 
   const handleRemove = () => {
-    console .log('aagye yhha ', value);
-  
-      if(value.item){
-          value.setItem(value.item-1);
-  
-      }
-      
-    if(value.total===0){
+    
+    if(total===0){
       return ;
     }
-    value.setTotal(value.total-price);
+    const present= cart.find((item)=>name===item.name);
+    if(!present){
+      return ;
+    }
+    if(present.count>0){
+        setTotal(total-price); 
+        setItem(item-1);
+        let newCart = cart.map((item)=>{
+          if(item.name===name){
+            if(item.count>0){
+            item.count=item.count-1;
+            }
+          }
+          return item;
+  
+        });
 
+        let check = [];
+        for( let i of newCart){
+          if(i.count>0){
+            check.push(i);
+          }
+        }
+        setCart(check);
+      }; 
+      
+    
 
+    
+    
   };
 
   return (

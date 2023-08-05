@@ -1,12 +1,11 @@
-import { useContext } from "react"
-import itemContext from "./context"
+import { Link } from "react-router-dom";
 import styles from "../styles/ItemCard.module.css";
-export default function CartComponent(){
+import { useValue } from "./context";
+export default function CartComponent({toggleCart}){
+
 
   
-
-    const {cart} = useContext(itemContext);
-
+    const {cart} = useValue();
     return(
    <>
            <div style={{
@@ -14,18 +13,23 @@ export default function CartComponent(){
             flexDirection:'row',
             padding:'10px',
             flexWrap:'wrap',
-            
+            zIndex:'4',
+            position: 'absolute',
+            top:'100px',
+            left:'50'
             }}>
-      {cart.map((item)=>(     
+              <Link to = '/' >Home</Link>
+              {/* <button onClick={()=>toggleCart()} >Close</button> */}
+                {cart.map((item)=>(     
 
-        <div className={styles.itemCard}>
-      <div className={styles.itemName}>{item.name}</div>
-      <div className={styles.itemPrice}>&#x20B9; {item.price}</div>
-      <div className={styles.itemButtonsWrapper}>
-        {item.count}
-     </div>
-     </div>
-     ))}
+                  <div className={styles.itemCard} key={item.id} >
+                  <div className={styles.itemName}>{item.name}</div>
+                  <div className={styles.itemPrice}>&#x20B9; {item.price}</div>
+                    <div className={styles.itemButtonsWrapper}>
+                        {item.count}
+                    </div>
+                  </div>
+              ))}
      </div>
 
      </>

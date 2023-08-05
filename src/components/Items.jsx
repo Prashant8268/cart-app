@@ -7,8 +7,8 @@ function Items() {
 
   return (
     <div className={styles.wrapper}>
-      <ItemCard name="Apple" price={199} />
-      {itemData.map((item)=><ItemCard name = {item.name} price = {item.price} key={item.id} />)}
+      <ItemCard name="Apple" price={199} id={'apple'}  />
+      {itemData.map((item)=><ItemCard name = {item.name} price = {item.price} key={item.id} id={item.id} />)}
     </div>
   );
 }

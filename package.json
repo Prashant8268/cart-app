@@ -2,6 +2,7 @@
   "name": "cart-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://prasshant8268.github.io/cart-app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -15,13 +16,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "homepage": "https://prashant8268.github.io/cart-app",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

@@ -1,0 +1,36 @@
+.cartContainer{
+
+
+}
+.heading{
+    color: black;
+    font-size: 4rem;
+    position: relative;
+    left: 48px;
+}
+.goBack{
+    padding: 6px;
+    color: white;
+    border-radius: 3px;
+    background-color: orange;
+    position: relative;
+    left: 50px;
+    border: 0;
+}
+.goBack:hover{
+    background-color: darkorange;
+}
+
+.itemsContainer{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    position: relative;
+    left: 100px;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    background-color: #ff5c05;
+
+}
